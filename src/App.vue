@@ -5,6 +5,7 @@
     <div class="wrapper">
       <HelloWorld msg="-- I did it! -- " />
       <div>
+        <p v-texto-topo="'red'">Diretiva LOCAL</p>
         <p v-texto="'green'">Primeira diretiva customizada</p>
         <p v-texto="{ cor: 'blue', fontSize: '200%' }">Segunda diretiva customizada</p>
         <p v-texto="corEFont">Terceira diretiva customizada</p>
@@ -29,6 +30,15 @@ import HelloWorld from './components/HelloWorld.vue'
 export default {
   components: {
     HelloWorld
+  },
+  directives: {
+    textoTopo: {
+      created(el, binding) {
+        console.log(el, binding)
+        el.style.color = binding.value
+        el.style.fontSize = '300%'
+      }
+    }
   },
   data() {
     return {
